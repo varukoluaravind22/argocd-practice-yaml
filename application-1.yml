@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapplication-1
+  namespace: argocd
+spec:
+  project: myproject-1
+  repoURL: https://github.com/varukoluaravind22/kubernetes-yaml.git
+  targetRevision: main
+  path: .
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  
