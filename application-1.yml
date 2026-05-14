@@ -6,8 +6,8 @@ metadata:
 spec:
   project: myproject-1
   repoURL: https://github.com/varukoluaravind22/kubernetes-yaml.git
-  targetRevision: main
-  path: .
+  targetRevision: Practice_yaml
+  path: mytest.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: default
