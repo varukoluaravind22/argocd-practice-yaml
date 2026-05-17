@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/varukoluaravind22/kubernetes-yaml.git
     targetRevision: Practice_yaml
-    path: mytest.yaml
+    path: argocd-deployments
   destination:
     server: https://kubernetes.default.svc
     namespace: default
