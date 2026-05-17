@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: myproject-4
+  namespace: argocd
+spec:
+  destinations:
+    - namespace: dev
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  sourceRepos:
+    - '*'
+
+  roles:
+    - name: Developer
+      description: specified permission for devloper
+      policies:
+        - p, proj:myproject-4:Developer, applications, get, myproject-4/*, allow
