@@ -2,16 +2,17 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: myproject-2
+  namespace: argocd
 spec:
   destinations:
-    - namespace: argocd
+    - namespace: default
       server: https://kubernetes.default.svc
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'
   namespaceResourceWhitelist:
     - group: '*'
-      kind: 'dev'
+      kind: '*'
   sourceRepos:
     - '!https://github.com/varukoluaravind22/kubernetes-yaml.git'
 

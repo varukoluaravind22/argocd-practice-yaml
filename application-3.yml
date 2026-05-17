@@ -7,15 +7,15 @@ spec:
   project: myproject-3
   source:
     repoURL: https://github.com/varukoluaravind22/kubernetes-yaml.git
-    targetRevision: Pratice_yaml
+    targetRevision: Practice_yaml
     path: argocd-deployments
   destination: 
     server:  https://kubernetes.default.svc
-    namespace: 'dev'
+    namespace: dev
   syncPolicy:
     automated:
       prune: true
       selfHeal: true 
     syncOptions:
-      - createNamespace=true
+      - CreateNamespace=true
 
