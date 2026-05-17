@@ -11,6 +11,6 @@ spec:
     kind: '*'
   sourceRepos:
   - '*'
-  destination:
+  destinations:
   - namespace: 'default'
     server: https://kubernetes.default.svc
