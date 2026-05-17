@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata: 
+  name: myproject-3
+spec:
+  destinations:
+    - server:  https://kubernetes.default.svc
+      namespace: default
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  sourceRepos:
+    - 'https://github.com/varukoluaravind22/kubernetes-yaml.git'

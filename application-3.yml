@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapplication-3
+  namespace: argocd
+spec:
+  project: myproject-3
+  source:
+    repoURL: https://github.com/varukoluaravind22/kubernetes-yaml.git
+    targetRevision: Pratice_yaml
+    path: argocd-deployments
+  destination: 
+    server:  https://kubernetes.default.svc
+    namespace: 'dev'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true 
+    syncOptions:
+      - createNamespace=true
+
