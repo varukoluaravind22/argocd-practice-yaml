@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: list-generator-2
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - environment: pre-stagging
+            server: https://kubernetes.default.svc
+            url: https://github.com/varukoluaravind22/kubernetes-yaml.git
+            dir_path: argocd-deployments
+  template:
+    metadata:
+      name: '{{environment}}-app'
+      namespace: argocd
+    spec:
+      project: myproject-1
+      source:
+        repoURL: '{{url}}'
+        targetRevision: Practice_yaml
+        path: '{{dir_path}}'
+      destination:
+        server: '{{server}}'
+        namespace: '{{environment}}'
+      syncPolicy:
+        automated: {}
+        syncOptions:
+          - CreateNamespace=true
