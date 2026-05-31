@@ -4,7 +4,7 @@ metadata:
   name: argo-canary-l1
   namespace: canary
 spec:
-  replicas: 25
+  replicas: 5
   strategy:
     canary:
       steps:
