@@ -16,7 +16,7 @@ spec:
       - setWeight: 80
         pause: {duration: 1m}
   selector:
-    matchlabels:
+    matchLabels:
       app: canary-devops
   template:
     metadata:
@@ -33,17 +33,19 @@ spec:
         livenessProbe:
           httpGet:
             path: /devops
-            initialDelaySeconds: 10s
-            periodSeconds: 10s
-            timeoutSeconds: 5s
-            failureThreshold: 3s
+            port: 8081
+          initialDelaySeconds: 10s
+          periodSeconds: 10s
+          timeoutSeconds: 5s
+          failureThreshold: 3s
         readinessProbe:
           httpGet:
             path: /devops
-            initialDelaySeconds: 10s
-            periodSeconds: 10s      
-            timeoutSeconds: 5s
-            failureThreshold: 5s
+            port: 8081
+          initialDelaySeconds: 10s
+          periodSeconds: 10s      
+          timeoutSeconds: 5s
+          failureThreshold: 5s
 ---
 apiVersion: v1
 kind: Service
