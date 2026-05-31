@@ -25,8 +25,8 @@ spec:
         app: canary-devops
     spec:
       containers:
-      - name: devops-l2
-        image: varukoluaravind22/ci-cd:mydevopsappL2-33
+      - name: devops-l1
+        image: varukoluaravind22/ci-cd:mydevopsappL1-34
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8081
