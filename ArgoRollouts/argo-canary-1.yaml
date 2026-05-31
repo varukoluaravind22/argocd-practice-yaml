@@ -27,7 +27,7 @@ spec:
       containers:
       - name: devops-l1
         image: varukoluaravind22/ci-cd:mydevopsappL1-34
-        imagePullPolicy: ifNotPresent
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8081
 
