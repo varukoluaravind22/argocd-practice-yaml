@@ -8,8 +8,8 @@ spec:
   - host: canary.com
     http:
       paths:
-        path: /
-        pathType: prefix
+      - path: /
+        pathType: Prefix
         backend:
           service:
             name: argo-canary-svc-devops
