@@ -1,0 +1,19 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler 
+metadata:
+  name: canary-devops-l1-hpa
+  namespace: canary
+spec:
+  scaleTargetRef:
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
+    name: argo-canary-l1
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: resources
+     resource:
+       name: cpu
+       target:
+         type: utilization
+         averageUtilization: 50
