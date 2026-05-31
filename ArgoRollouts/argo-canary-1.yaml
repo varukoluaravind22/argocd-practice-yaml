@@ -1,0 +1,60 @@
+apiVersion: argoproj.io/v1alphpa1
+kind: Rollout
+metadata:
+  name: argo-canary-L1
+spec:
+  replicas: 25
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+        pause: {}
+      - setWeight: 40
+        pause: {duration: 10s}
+      - setWeight: 60
+        pause: {duration: 20s}
+      - setWeight: 80
+        pause: {duration: 1m}
+  selector:
+    matchlabels:
+      app: canary-devops
+  template:
+    metadata:
+      labels:
+        app: canary-devops
+    spec:
+      containers:
+      - name: devops-L1
+        image: varukoluaravind22/ci-cd:mydevopsappL1-34
+        imagePullPolicy: ifNotPresent
+        ports:
+        - containerPort: 8081
+
+        livenessProbe:
+          httpGet:
+            path: /devops
+            initialDelaySeconds: 10s
+            periodSeconds: 10s
+            timeoutSeconds: 5s
+            failureThreshold: 3s
+        readinessProbe:
+          httpGet:
+            path: /devops
+            initialDelaySeconds: 10s
+            periodSeconds: 10s      
+            timeoutSeconds: 5s
+            failureThreshold: 5s
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: argo-canary-svc-devops
+spec:
+  type: ClusterIp
+  selector:
+    app: canary-devops
+  ports:
+  - port: 8081
+    targetPort: 8081
+
+
