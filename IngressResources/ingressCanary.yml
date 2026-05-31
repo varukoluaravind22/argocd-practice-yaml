@@ -3,15 +3,15 @@ kind: Ingress
 metadata:
   name: canary
 spec:
-ingressClassName: nginx
-rules:
-- hosts: canary.com
-  http:
-    paths:
-      path: /
-      pathType: prefix
-      backend:
-        service:
-          name: argo-canary-svc-devops
-          port:
-            number: 8081
+  ingressClassName: nginx
+  rules:
+  - host: canary.com
+    http:
+      paths:
+        path: /
+        pathType: prefix
+        backend:
+          service:
+            name: argo-canary-svc-devops
+            port:
+              number: 8081
